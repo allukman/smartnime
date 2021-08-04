@@ -85,6 +85,9 @@ dependencies {
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    // Lottie
+    implementation 'com.airbnb.android:lottie:3.4.4'
+
     implementation 'com.android.support:multidex:1.0.3'
 
     // Testing
