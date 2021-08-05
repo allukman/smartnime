@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit
 
 class ApiClient {
     companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/3/"
-        const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500"
+        private const val BASE_URL = "https://api.jikan.moe/v3/"
+        const val BASE_URL_IMAGE = ""
 
         private fun provideHttpLoggingInterceptor() = run {
             HttpLoggingInterceptor().apply {

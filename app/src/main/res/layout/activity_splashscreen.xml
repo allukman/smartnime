@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SplashscreenActivity">
+        tools:context=".ui.SplashscreenActivity">
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:id="@+id/judul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/judul"
+            android:text="@string/app_name"
             android:textSize="32dp"
             android:layout_marginBottom="48dp"
             app:layout_constraintLeft_toLeftOf="parent"
