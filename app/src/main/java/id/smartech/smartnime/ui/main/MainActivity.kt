@@ -1,7 +1,9 @@
 package id.smartech.smartnime.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,8 @@ import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityMainBinding
 import id.smartech.smartnime.model.TopAnimeModel
 import id.smartech.smartnime.model.TopMangaModel
+import id.smartech.smartnime.ui.SidebarActivity
+import id.smartech.smartnime.ui.search.SearchActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,6 +39,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         subscribeLiveData()
         setRecyclerView()
         setTime()
+        setOnClick()
+        setSearchView()
     }
 
     private fun setRecyclerView() {
@@ -57,6 +63,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         adapterManga.setOnItemClickCallback(object : TopMangaAdapter.OnItemClickCallback{
             override fun onClickItem(data: TopMangaModel) {
                 noticeToast(data.title)
+            }
+        })
+    }
+
+    private fun setOnClick() {
+        bind.hamburger.setOnClickListener {
+            intents<SidebarActivity>(this)
+        }
+    }
+
+    private fun setSearchView() {
+        bind.searchButton.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener,
+                SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val intent = Intent(this@MainActivity, SearchActivity::class.java)
+                intent.putExtra("key", query)
+                startActivity(intent)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
             }
         })
     }

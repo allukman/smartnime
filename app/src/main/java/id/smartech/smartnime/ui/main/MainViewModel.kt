@@ -57,7 +57,7 @@ class MainViewModel: ViewModel(), CoroutineScope {
                             episodes = it.episodes,
                             members = it.members,
                             score = it.score,
-                            url = it.imageUrl
+                            url = it.url
                     )
                 }
                 onSuccessAnimeLiveData.value = list
