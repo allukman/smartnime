@@ -8,6 +8,7 @@ import id.smartech.smartnime.databinding.ActivitySidebarBinding
 import id.smartech.smartnime.ui.main.MainActivity
 import id.smartech.smartnime.ui.nav.InformationActivity
 import id.smartech.smartnime.ui.nav.schedule.ScheduleActivity
+import id.smartech.smartnime.ui.people.TopPeopleActivity
 
 class SidebarActivity : BaseActivity<ActivitySidebarBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,10 @@ class SidebarActivity : BaseActivity<ActivitySidebarBinding>() {
 
         bind.back.setOnClickListener {
             intents<MainActivity>(this)
+        }
+
+        bind.people.setOnClickListener {
+            intents<TopPeopleActivity>(this)
         }
     }
 }

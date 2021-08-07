@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartnime">
         <activity
+            android:name=".ui.people.TopPeopleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
             android:name=".ui.nav.schedule.ScheduleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />

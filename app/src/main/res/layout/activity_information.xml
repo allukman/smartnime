@@ -7,14 +7,16 @@
         android:layout_height="match_parent"
         tools:context=".ui.nav.InformationActivity">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/left_arrow"
+            android:scaleType="fitXY"
             android:layout_margin="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:src="@drawable/left_arrow"
+            android:background="?selectableItemBackgroundBorderless"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -58,21 +60,21 @@
                         android:layout_marginBottom="16dp"
                         android:textColor="@color/black"
                         android:layout_gravity="center"
-                        android:textSize="24sp"/>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Al Lukman"
                         android:layout_gravity="center"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jeff Aria"
                         android:layout_gravity="center"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -81,14 +83,14 @@
                         android:layout_margin="16dp"
                         android:textColor="@color/black"
                         android:layout_gravity="center"
-                        android:textSize="24sp"/>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="api.jikan.moe/v3"
                         android:layout_gravity="center"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,14 +99,14 @@
                         android:layout_margin="16dp"
                         android:textColor="@color/black"
                         android:layout_gravity="center"
-                        android:textSize="24sp"/>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="https://github.com/allukman/smartnime"
                         android:layout_gravity="center"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -113,21 +115,21 @@
                         android:layout_margin="16dp"
                         android:textColor="@color/black"
                         android:layout_gravity="center"
-                        android:textSize="24sp"/>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="https://www.flaticon.com/"
                         android:layout_gravity="center"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="https://lottiefiles.com/"
                         android:layout_gravity="center"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="24dp"/>
 
                 </LinearLayout>

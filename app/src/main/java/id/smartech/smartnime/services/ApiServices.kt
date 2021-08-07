@@ -3,6 +3,7 @@ package id.smartech.smartnime.services
 import id.smartech.smartnime.model.TopAnimeResponse
 import id.smartech.smartnime.model.TopMangaResponse
 import id.smartech.smartnime.ui.nav.schedule.model.*
+import id.smartech.smartnime.ui.people.model.TopPeopleResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -14,6 +15,9 @@ interface ApiServices {
 
     @GET("top/manga/{page}")
     suspend fun getTopManga(@Path("page")page: Int): TopMangaResponse
+
+    @GET("top/people/{page}")
+    suspend fun getTopPeople(@Path("page")page: Int): TopPeopleResponse
 
 //    GET Anime Schedule
     @GET("schedule/monday")
