@@ -3,7 +3,8 @@ package id.smartech.smartnime.services
 import id.smartech.smartnime.model.TopAnimeResponse
 import id.smartech.smartnime.model.TopMangaResponse
 import id.smartech.smartnime.ui.nav.schedule.model.*
-import id.smartech.smartnime.ui.people.model.TopPeopleResponse
+import id.smartech.smartnime.ui.nav.people.model.TopPeopleResponse
+import id.smartech.smartnime.ui.nav.seasonal.model.SeasonalAnimeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -18,6 +19,9 @@ interface ApiServices {
 
     @GET("top/people/{page}")
     suspend fun getTopPeople(@Path("page")page: Int): TopPeopleResponse
+
+    @GET("top/characters/{page}")
+    suspend fun getTopCharacters(@Path("page")page: Int): TopPeopleResponse
 
 //    GET Anime Schedule
     @GET("schedule/monday")
@@ -46,6 +50,29 @@ interface ApiServices {
 
     @GET("schedule/unknown")
     suspend fun getUnknownSchedule(): UnknownDayResponse
+
+//    GET Anime Seasonal
+    @GET("season/{year}/{season}")
+    suspend fun getAnimeSeasonal(@Path("year")year: String, @Path("season")season: String): SeasonalAnimeResponse
+
+//    GET Anime
+    @GET("top/anime/1/upcoming")
+    suspend fun getUpcomingAnime(): TopAnimeResponse
+
+    @GET("top/anime/1/airing")
+    suspend fun getAiringAnime(): TopAnimeResponse
+
+    @GET("top/anime/1/bypopularity")
+    suspend fun getPopularAnime(): TopAnimeResponse
+
+    @GET("top/anime/1/favorite")
+    suspend fun getFavoriteAnime(): TopAnimeResponse
+
+    @GET("top/anime/1")
+    suspend fun getTopAnime(): TopAnimeResponse
+
+//    GET Manga
+
 
 
 }

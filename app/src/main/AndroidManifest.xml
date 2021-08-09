@@ -14,7 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartnime">
         <activity
-            android:name=".ui.people.TopPeopleActivity"
+            android:name=".ui.nav.anime.ListAnimeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
+            android:name=".ui.nav.seasonal.SeasonalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
+            android:name=".ui.nav.characters.TopCharactersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
+            android:name=".ui.nav.people.TopPeopleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity
@@ -22,7 +34,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity
-            android:name=".ui.nav.InformationActivity"
+            android:name=".ui.nav.information.InformationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity

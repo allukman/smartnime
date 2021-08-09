@@ -1,4 +1,4 @@
-package id.smartech.smartnime.ui.nav
+package id.smartech.smartnime.ui.nav.information
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

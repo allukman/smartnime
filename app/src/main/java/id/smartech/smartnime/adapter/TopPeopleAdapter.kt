@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.smartech.smartnime.R
 import id.smartech.smartnime.databinding.ItemListPeopleBinding
-import id.smartech.smartnime.ui.people.model.TopPeopleModel
+import id.smartech.smartnime.ui.nav.people.model.TopPeopleModel
 
 class TopPeopleAdapter(private val items: ArrayList<TopPeopleModel>): RecyclerView.Adapter<TopPeopleAdapter.TopPeopleHolder>() {
 

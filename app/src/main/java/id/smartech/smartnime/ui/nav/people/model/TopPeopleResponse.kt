@@ -1,7 +1,6 @@
-package id.smartech.smartnime.ui.people.model
+package id.smartech.smartnime.ui.nav.people.model
 
 import com.google.gson.annotations.SerializedName
-import id.smartech.smartnime.model.TopAnimeModel
 
 data class TopPeopleResponse (
     @SerializedName("request_hash")val requestHash: String,

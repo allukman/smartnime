@@ -1,13 +1,10 @@
-package id.smartech.smartnime.ui.people
+package id.smartech.smartnime.ui.nav.people
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import id.smartech.smartnime.model.TopAnimeModel
-import id.smartech.smartnime.model.TopAnimeResponse
-import id.smartech.smartnime.model.TopMangaModel
 import id.smartech.smartnime.services.ApiServices
-import id.smartech.smartnime.ui.people.model.TopPeopleModel
-import id.smartech.smartnime.ui.people.model.TopPeopleResponse
+import id.smartech.smartnime.ui.nav.people.model.TopPeopleModel
+import id.smartech.smartnime.ui.nav.people.model.TopPeopleResponse
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -25,7 +22,7 @@ class TopPeopleViewModel: ViewModel(), CoroutineScope {
         this.services = services
     }
 
-    fun getTopAnime() {
+    fun getTopPeople() {
         launch {
             isLoadingLiveData.value = true
 
@@ -49,7 +46,6 @@ class TopPeopleViewModel: ViewModel(), CoroutineScope {
                         imageUrl = it.imageUrl,
                         title = it.title,
                         url = it.url,
-                        birthday = it.url,
                         favorites = it.favorites,
                         nameKanji = it.nameKanji
                     )
