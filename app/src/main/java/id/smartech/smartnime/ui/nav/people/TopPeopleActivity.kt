@@ -10,7 +10,7 @@ import id.smartech.smartnime.R
 import id.smartech.smartnime.adapter.TopPeopleAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityTopPeopleBinding
-import id.smartech.smartnime.ui.SidebarActivity
+import id.smartech.smartnime.ui.sidebar.SidebarActivity
 import id.smartech.smartnime.ui.nav.people.model.TopPeopleModel
 
 class TopPeopleActivity : BaseActivity<ActivityTopPeopleBinding>() {

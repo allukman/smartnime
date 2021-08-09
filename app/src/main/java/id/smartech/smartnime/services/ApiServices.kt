@@ -72,6 +72,14 @@ interface ApiServices {
     suspend fun getTopAnime(): TopAnimeResponse
 
 //    GET Manga
+    @GET("top/manga/1/{category}")
+    suspend fun getMangaCategory(@Path("category")category: String): TopMangaResponse
+
+    @GET("top/manga/1/bypopularity")
+    suspend fun getPopularManga(): TopMangaResponse
+
+    @GET("top/manga/1/favorite")
+    suspend fun getFavoriteManga(): TopMangaResponse
 
 
 

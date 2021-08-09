@@ -1,6 +1,5 @@
 package id.smartech.smartnime.ui.nav.anime
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -10,15 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.smartech.smartnime.R
 import id.smartech.smartnime.adapter.AnimeAdapter
-import id.smartech.smartnime.adapter.TopAnimeAdapter
-import id.smartech.smartnime.adapter.TopMangaAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityListAnimeBinding
 import id.smartech.smartnime.model.TopAnimeModel
-import id.smartech.smartnime.model.TopMangaModel
-import id.smartech.smartnime.ui.SidebarActivity
-import id.smartech.smartnime.ui.main.MainActivity
-import id.smartech.smartnime.ui.main.MainViewModel
+import id.smartech.smartnime.ui.sidebar.SidebarActivity
 
 class ListAnimeActivity : BaseActivity<ActivityListAnimeBinding>() {
     private lateinit var viewModel: ListAnimeViewModel

@@ -1,4 +1,4 @@
-package id.smartech.smartnime.ui
+package id.smartech.smartnime.ui.sidebar
 
 import android.os.Bundle
 import id.smartech.smartnime.R
@@ -8,6 +8,7 @@ import id.smartech.smartnime.ui.main.MainActivity
 import id.smartech.smartnime.ui.nav.anime.ListAnimeActivity
 import id.smartech.smartnime.ui.nav.information.InformationActivity
 import id.smartech.smartnime.ui.nav.characters.TopCharactersActivity
+import id.smartech.smartnime.ui.nav.manga.ListMangaActivity
 import id.smartech.smartnime.ui.nav.schedule.ScheduleActivity
 import id.smartech.smartnime.ui.nav.people.TopPeopleActivity
 import id.smartech.smartnime.ui.nav.seasonal.SeasonalActivity
@@ -23,6 +24,10 @@ class SidebarActivity : BaseActivity<ActivitySidebarBinding>() {
     private fun setOnClick() {
         bind.anime.setOnClickListener {
             intents<ListAnimeActivity>(this)
+        }
+
+        bind.manga.setOnClickListener {
+            intents<ListMangaActivity>(this)
         }
 
         bind.schedule.setOnClickListener {

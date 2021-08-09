@@ -15,7 +15,7 @@ import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityMainBinding
 import id.smartech.smartnime.model.TopAnimeModel
 import id.smartech.smartnime.model.TopMangaModel
-import id.smartech.smartnime.ui.SidebarActivity
+import id.smartech.smartnime.ui.sidebar.SidebarActivity
 import id.smartech.smartnime.ui.search.SearchActivity
 import java.util.*
 import kotlin.collections.ArrayList

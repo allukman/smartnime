@@ -1,4 +1,4 @@
-package id.smartech.smartnime.ui
+package id.smartech.smartnime.ui.splash
 
 import android.os.Bundle
 import android.os.Handler

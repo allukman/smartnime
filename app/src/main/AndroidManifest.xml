@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartnime">
         <activity
+            android:name=".ui.nav.manga.ListMangaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
             android:name=".ui.nav.anime.ListAnimeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
@@ -38,7 +42,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity
-            android:name=".ui.SidebarActivity"
+            android:name=".ui.sidebar.SidebarActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity
@@ -50,7 +54,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
         <activity
-            android:name=".ui.SplashscreenActivity"
+            android:name=".ui.splash.SplashscreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar">
             <intent-filter>
