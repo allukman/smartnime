@@ -15,6 +15,8 @@ import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityMainBinding
 import id.smartech.smartnime.model.TopAnimeModel
 import id.smartech.smartnime.model.TopMangaModel
+import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
+import id.smartech.smartnime.ui.detail.manga.DetailMangaActivity
 import id.smartech.smartnime.ui.sidebar.SidebarActivity
 import id.smartech.smartnime.ui.search.SearchActivity
 import java.util.*
@@ -51,7 +53,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         bind.rvTopAnime.adapter = adapterAnime
         adapterAnime.setOnItemClickCallback(object : TopAnimeAdapter.OnItemClickCallback{
             override fun onClickItem(data: TopAnimeModel) {
-                noticeToast(data.title)
+                val intent = Intent(this@MainActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
             }
         })
 
@@ -62,7 +66,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         bind.rvTopManga.adapter = adapterManga
         adapterManga.setOnItemClickCallback(object : TopMangaAdapter.OnItemClickCallback{
             override fun onClickItem(data: TopMangaModel) {
-                noticeToast(data.title)
+                val intent = Intent(this@MainActivity,DetailMangaActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
             }
         })
     }

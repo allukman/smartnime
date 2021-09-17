@@ -1,5 +1,6 @@
 package id.smartech.smartnime.ui.nav.manga
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -17,6 +18,7 @@ import id.smartech.smartnime.adapter.MangaAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityListMangaBinding
 import id.smartech.smartnime.model.TopMangaModel
+import id.smartech.smartnime.ui.detail.manga.DetailMangaActivity
 import id.smartech.smartnime.ui.nav.anime.ListAnimeViewModel
 import id.smartech.smartnime.ui.sidebar.SidebarActivity
 
@@ -136,16 +138,40 @@ class ListMangaActivity : BaseActivity<ActivityListMangaBinding>() {
         bind.rvCategoryManga.layoutManager = layoutManager
         adapter = MangaAdapter(list)
         bind.rvCategoryManga.adapter = adapter
+        adapter.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopMangaModel) {
+                val intent = Intent(this@ListMangaActivity, DetailMangaActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
 
         bind.rvPopularManga.isNestedScrollingEnabled = false
         bind.rvPopularManga.layoutManager = layoutManagerPopular
         adapterPopular = MangaAdapter(listPopular)
         bind.rvPopularManga.adapter = adapterPopular
+        adapter.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopMangaModel) {
+                val intent = Intent(this@ListMangaActivity, DetailMangaActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
 
         bind.rvFavoritesManga.isNestedScrollingEnabled = false
         bind.rvFavoritesManga.layoutManager = layoutManagerFavorites
         adapterFavorite = MangaAdapter(listFavorite)
         bind.rvFavoritesManga.adapter = adapterFavorite
+        adapter.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopMangaModel) {
+                val intent = Intent(this@ListMangaActivity, DetailMangaActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
     }
 
     private fun setSpinner() {

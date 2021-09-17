@@ -1,5 +1,6 @@
 package id.smartech.smartnime.ui.nav.schedule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -12,6 +13,7 @@ import id.smartech.smartnime.R
 import id.smartech.smartnime.adapter.ScheduleAnimeAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityScheduleBinding
+import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
 import id.smartech.smartnime.ui.sidebar.SidebarActivity
 import id.smartech.smartnime.ui.nav.schedule.model.DayModel
 
@@ -45,6 +47,13 @@ class ScheduleActivity : BaseActivity<ActivityScheduleBinding>() {
         bind.rvSchedule.layoutManager = layoutManager
         adapter = ScheduleAnimeAdapter(list)
         bind.rvSchedule.adapter = adapter
+        adapter.setOnItemClickCallback(object : ScheduleAnimeAdapter.OnItemClickCallback{
+            override fun onClickItem(data: DayModel) {
+                val intent = Intent(this@ScheduleActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+        })
     }
 
     private fun setViewModel() {

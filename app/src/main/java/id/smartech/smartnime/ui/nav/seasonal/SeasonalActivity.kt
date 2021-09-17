@@ -1,6 +1,6 @@
 package id.smartech.smartnime.ui.nav.seasonal
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.smartech.smartnime.R
 import id.smartech.smartnime.adapter.SeasonalAnimeAdapter
-import id.smartech.smartnime.adapter.TopAnimeAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivitySeasonalBinding
-import id.smartech.smartnime.model.TopAnimeModel
-import id.smartech.smartnime.ui.nav.schedule.ScheduleViewModel
+import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
 import id.smartech.smartnime.ui.nav.seasonal.model.SeasonalAnimeModel
 
 class SeasonalActivity : BaseActivity<ActivitySeasonalBinding>() {
@@ -78,7 +76,9 @@ class SeasonalActivity : BaseActivity<ActivitySeasonalBinding>() {
         bind.rvSeasonal.adapter = adapter
         adapter.setOnItemClickCallback(object : SeasonalAnimeAdapter.OnItemClickCallback{
             override fun onClickItem(data: SeasonalAnimeModel) {
-                noticeToast(data.title)
+                val intent = Intent(this@SeasonalActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
             }
         })
     }

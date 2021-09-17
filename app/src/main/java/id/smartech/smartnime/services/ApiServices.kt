@@ -1,7 +1,13 @@
 package id.smartech.smartnime.services
 
+import id.smartech.smartnime.model.RecommendationsResponse
 import id.smartech.smartnime.model.TopAnimeResponse
 import id.smartech.smartnime.model.TopMangaResponse
+import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterResponse
+import id.smartech.smartnime.ui.detail.anime.model.DetailAnimeModel
+import id.smartech.smartnime.ui.detail.anime.episodes.model.EpisodesResponse
+import id.smartech.smartnime.ui.detail.manga.characters.MangaCharactersResponse
+import id.smartech.smartnime.ui.detail.manga.model.DetailMangaResponse
 import id.smartech.smartnime.ui.nav.schedule.model.*
 import id.smartech.smartnime.ui.nav.people.model.TopPeopleResponse
 import id.smartech.smartnime.ui.nav.seasonal.model.SeasonalAnimeResponse
@@ -80,6 +86,29 @@ interface ApiServices {
 
     @GET("top/manga/1/favorite")
     suspend fun getFavoriteManga(): TopMangaResponse
+
+//    GET Detail Anime
+    @GET("anime/{id}")
+    suspend fun getDetailAnime(@Path("id")id: Int) : DetailAnimeModel
+
+    @GET("anime/{id}/characters_staff")
+    suspend fun getDetailAnimeCharacter(@Path("id")id: Int) : AnimeCharacterResponse
+
+    @GET("anime/{id}/episodes")
+    suspend fun getDetailAnimeEpisodes(@Path("id")id: Int) : EpisodesResponse
+
+    @GET("anime/{id}/recommendations")
+    suspend fun getDetailAnimeRecommendations(@Path("id")id: Int) : RecommendationsResponse
+
+//    GET Detail Manga
+    @GET("manga/{id}")
+    suspend fun getDetailManga(@Path("id")id: Int) : DetailMangaResponse
+
+    @GET("manga/{id}/characters")
+    suspend fun getDetailMangaCharacters(@Path("id")id: Int) : MangaCharactersResponse
+
+    @GET("manga/{id}/recommendations")
+    suspend fun getDetailMangaRecommendations(@Path("id")id: Int) : RecommendationsResponse
 
 
 

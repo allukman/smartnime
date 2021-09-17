@@ -1,5 +1,6 @@
 package id.smartech.smartnime.ui.nav.anime
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -12,6 +13,7 @@ import id.smartech.smartnime.adapter.AnimeAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityListAnimeBinding
 import id.smartech.smartnime.model.TopAnimeModel
+import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
 import id.smartech.smartnime.ui.sidebar.SidebarActivity
 
 class ListAnimeActivity : BaseActivity<ActivityListAnimeBinding>() {
@@ -154,20 +156,48 @@ class ListAnimeActivity : BaseActivity<ActivityListAnimeBinding>() {
         bind.rvAiringAnime.layoutManager = layoutManagerAiring
         adapterAiring = AnimeAdapter(listAiring)
         bind.rvAiringAnime.adapter = adapterAiring
+        adapterAiring.setOnItemClickCallback(object : AnimeAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopAnimeModel) {
+                val intent = Intent(this@ListAnimeActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+        })
 
         bind.rvUpcomingAnime.isNestedScrollingEnabled = false
         bind.rvUpcomingAnime.layoutManager = layoutManagerUpcoming
         adapterUpcoming = AnimeAdapter(listUpcoming)
         bind.rvUpcomingAnime.adapter = adapterUpcoming
+        adapterUpcoming.setOnItemClickCallback(object : AnimeAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopAnimeModel) {
+                val intent = Intent(this@ListAnimeActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+        })
 
         bind.rvPopularAnime.isNestedScrollingEnabled = false
         bind.rvPopularAnime.layoutManager = layoutManagerPopular
         adapterPopular = AnimeAdapter(listPopular)
         bind.rvPopularAnime.adapter = adapterPopular
+        adapterPopular.setOnItemClickCallback(object : AnimeAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopAnimeModel) {
+                val intent = Intent(this@ListAnimeActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+        })
 
         bind.rvFavoritesAnime.isNestedScrollingEnabled = false
         bind.rvFavoritesAnime.layoutManager = layoutManagerFavorites
         adapterFavorites = AnimeAdapter(listFavorites)
         bind.rvFavoritesAnime.adapter = adapterFavorites
+        adapterFavorites.setOnItemClickCallback(object : AnimeAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopAnimeModel) {
+                val intent = Intent(this@ListAnimeActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+        })
     }
 }

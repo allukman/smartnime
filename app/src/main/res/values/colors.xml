@@ -10,4 +10,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#f7f7f7</color>
     <color name="shimmer">#787474</color>
+    <color name="filler">#ce4980</color>
 </resources>
