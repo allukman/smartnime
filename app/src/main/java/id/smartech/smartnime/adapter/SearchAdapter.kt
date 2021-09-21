@@ -6,31 +6,30 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.smartech.smartnime.R
-import id.smartech.smartnime.databinding.ItemListCharacterMangaBinding
-import id.smartech.smartnime.model.TopMangaModel
-import id.smartech.smartnime.ui.detail.manga.characters.MangaCharactersModel
+import id.smartech.smartnime.databinding.ItemListSearchBinding
+import id.smartech.smartnime.ui.search.model.SearchModel
+import id.smartech.smartnime.ui.search.model.SearchResponse
 
-class MangaCharacterAdapter(private val items: ArrayList<MangaCharactersModel>): RecyclerView.Adapter<MangaCharacterAdapter.MangaCharacterHolder>() {
-
+class SearchAdapter(private val items: ArrayList<SearchModel>): RecyclerView.Adapter<SearchAdapter.SearchHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun addList(list: List<MangaCharactersModel>) {
+    fun addList(list: List<SearchModel>) {
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
     }
 
-    class MangaCharacterHolder(val binding: ItemListCharacterMangaBinding): RecyclerView.ViewHolder(binding.root)
+    class SearchHolder(val binding: ItemListSearchBinding): RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaCharacterHolder {
-        return MangaCharacterHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHolder {
+        return SearchHolder(
                 DataBindingUtil.inflate(
                         (LayoutInflater.from(parent.context)),
-                        R.layout.item_list_character_manga,
+                        R.layout.item_list_search,
                         parent, false
                 )
         )
@@ -38,16 +37,16 @@ class MangaCharacterAdapter(private val items: ArrayList<MangaCharactersModel>):
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: MangaCharacterHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchHolder, position: Int) {
         val item = items[position]
 
-        holder.binding.nameChar.text = item.name
+        holder.binding.name.text = if(item.title.isNullOrEmpty()) item.name else item.title
 
         Glide.with(holder.itemView)
                 .load(item.imageUrl)
                 .placeholder(R.drawable.white)
                 .error(R.drawable.white)
-                .into(holder.binding.imageChar)
+                .into(holder.binding.image)
 
         holder.itemView.setOnClickListener {
             onItemClickCallback.onClickItem(item)
@@ -55,6 +54,6 @@ class MangaCharacterAdapter(private val items: ArrayList<MangaCharactersModel>):
     }
 
     interface OnItemClickCallback {
-        fun onClickItem(data: MangaCharactersModel)
+        fun onClickItem(data: SearchModel)
     }
 }

@@ -1,8 +1,10 @@
 package id.smartech.smartnime.ui.detail.manga
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -20,6 +22,7 @@ import id.smartech.smartnime.model.RecommendationsModel
 import id.smartech.smartnime.ui.detail.anime.DetailAnimeViewModel
 import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterModel
 import id.smartech.smartnime.ui.detail.anime.episodes.AnimeEpisodesActivity
+import id.smartech.smartnime.ui.detail.character.DetailCharacterActivity
 import id.smartech.smartnime.ui.detail.manga.characters.MangaCharactersModel
 import id.smartech.smartnime.ui.detail.manga.model.DetailMangaResponse
 
@@ -40,7 +43,7 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         id = intent.getIntExtra("id",0)
 
         setViewModel(id!!)
-        subscribeLiveData()
+        subscribeLiveData(id!!)
         setRecyclerView()
         setOnClick()
     }
@@ -53,7 +56,7 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         viewModel.getDetailMangaRecommendations(id)
     }
 
-    private fun subscribeLiveData() {
+    private fun subscribeLiveData(id: Int) {
         this.let {
             viewModel.isLoadingLiveData.observe(it) { isLoading ->
                 if(isLoading) {
@@ -86,7 +89,7 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
 
         this.let {
             viewModel.onFailLiveData.observe(it) { message ->
-                noticeToast(message)
+                Log.d("onFail", message)
             }
         }
     }
@@ -98,6 +101,14 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         bind.rvCharacters.layoutManager = layoutManager
         adapter = MangaCharacterAdapter(list)
         bind.rvCharacters.adapter = adapter
+        adapter.setOnItemClickCallback(object : MangaCharacterAdapter.OnItemClickCallback{
+            override fun onClickItem(data: MangaCharactersModel) {
+                val intent = Intent(this@DetailMangaActivity, DetailCharacterActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
 
         layoutManagerRecommendations = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
@@ -105,7 +116,14 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         bind.rvRecommendations.layoutManager = layoutManagerRecommendations
         adapterRecommendations = RecommendationsAdapter(listRecommendations)
         bind.rvRecommendations.adapter = adapterRecommendations
+        adapterRecommendations.setOnItemClickCallback(object : RecommendationsAdapter.OnItemClickCallback {
+            override fun onClickItem(data: RecommendationsModel) {
+                val intent = Intent(this@DetailMangaActivity, DetailMangaActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
 
+        })
     }
 
     private fun setData(data: DetailMangaResponse) {
@@ -126,11 +144,24 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         val genres = data.genres.map { it.name.replace("\n                ","") }
         bind.genres.text = if (genres.isNotEmpty()) removeBrackets(genres) else "N/A"
 
+        bind.detail.setOnClickListener {
+            intentBrowser(url = data.url)
+        }
+
+        bind.share.setOnClickListener {
+            shareToOtherApps(data.url)
+        }
+
         Glide.with(this)
                 .load(data.imageUrl)
                 .placeholder(R.drawable.white)
                 .error(R.drawable.white)
                 .into(bind.image)
+    }
+
+    private fun intentBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun removeBrackets(data: List<String>) : String{
@@ -145,6 +176,15 @@ class DetailMangaActivity : BaseActivity<ActivityDetailMangaBinding>() {
         }
 
         return result
+    }
+
+    private fun shareToOtherApps(text: String) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.putExtra(Intent.EXTRA_TEXT, text)
+        intent.type = "text/plain"
+
+        startActivity(Intent.createChooser(intent, "share to : "))
     }
 
     private fun setOnClick() {

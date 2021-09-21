@@ -8,8 +8,16 @@ import com.bumptech.glide.Glide
 import id.smartech.smartnime.R
 import id.smartech.smartnime.databinding.ItemListCharacterMangaBinding
 import id.smartech.smartnime.model.RecommendationsModel
+import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterModel
 
 class RecommendationsAdapter(private val items: ArrayList<RecommendationsModel>): RecyclerView.Adapter<RecommendationsAdapter.RecommendationsHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     fun addList(list: List<RecommendationsModel>) {
         items.clear()
         items.addAll(list)
@@ -40,5 +48,13 @@ class RecommendationsAdapter(private val items: ArrayList<RecommendationsModel>)
                 .placeholder(R.drawable.white)
                 .error(R.drawable.white)
                 .into(holder.binding.imageChar)
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onClickItem(item)
+        }
+    }
+
+    interface OnItemClickCallback {
+        fun onClickItem(data: RecommendationsModel)
     }
 }

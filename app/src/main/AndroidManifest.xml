@@ -14,10 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartnime">
         <activity
+            android:name=".ui.detail.character.DetailCharacterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Smartnime.NoActionBar" />
+        <activity
             android:name=".ui.detail.manga.DetailMangaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Smartnime.NoActionBar" />
-
         <activity
             android:name=".ui.detail.anime.episodes.AnimeEpisodesActivity"
             android:screenOrientation="portrait"

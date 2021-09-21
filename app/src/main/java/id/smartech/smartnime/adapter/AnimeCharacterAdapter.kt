@@ -1,6 +1,5 @@
 package id.smartech.smartnime.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,15 @@ import com.bumptech.glide.Glide
 import id.smartech.smartnime.R
 import id.smartech.smartnime.databinding.ItemListCharactersBinding
 import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterModel
+import id.smartech.smartnime.ui.detail.anime.model.VoiceActorModel
 
 class AnimeCharacterAdapter(private val items: ArrayList<AnimeCharacterModel>): RecyclerView.Adapter<AnimeCharacterAdapter.CharacterHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     fun addList(list: List<AnimeCharacterModel>) {
         items.clear()
@@ -59,5 +65,19 @@ class AnimeCharacterAdapter(private val items: ArrayList<AnimeCharacterModel>): 
                 .error(R.drawable.white)
                 .into(holder.binding.imageChar)
 
+        holder.binding.character.setOnClickListener {
+            onItemClickCallback.onClickCharacter(item)
+        }
+
+        holder.binding.voiceActor.setOnClickListener {
+            if (item.voiceActors.size > 0) {
+                onItemClickCallback.onClickVoiceActor(item.voiceActors[0])
+            }
+        }
+    }
+
+    interface OnItemClickCallback {
+        fun onClickCharacter(data: AnimeCharacterModel)
+        fun onClickVoiceActor(data: VoiceActorModel)
     }
 }

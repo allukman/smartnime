@@ -151,7 +151,7 @@ class ListMangaActivity : BaseActivity<ActivityListMangaBinding>() {
         bind.rvPopularManga.layoutManager = layoutManagerPopular
         adapterPopular = MangaAdapter(listPopular)
         bind.rvPopularManga.adapter = adapterPopular
-        adapter.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
+        adapterPopular.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
             override fun onClickItem(data: TopMangaModel) {
                 val intent = Intent(this@ListMangaActivity, DetailMangaActivity::class.java)
                 intent.putExtra("id", data.malId)
@@ -164,7 +164,7 @@ class ListMangaActivity : BaseActivity<ActivityListMangaBinding>() {
         bind.rvFavoritesManga.layoutManager = layoutManagerFavorites
         adapterFavorite = MangaAdapter(listFavorite)
         bind.rvFavoritesManga.adapter = adapterFavorite
-        adapter.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
+        adapterFavorite.setOnItemClickCallback(object : MangaAdapter.OnItemClickCallback{
             override fun onClickItem(data: TopMangaModel) {
                 val intent = Intent(this@ListMangaActivity, DetailMangaActivity::class.java)
                 intent.putExtra("id", data.malId)

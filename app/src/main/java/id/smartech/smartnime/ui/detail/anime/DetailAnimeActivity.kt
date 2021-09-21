@@ -1,6 +1,7 @@
 package id.smartech.smartnime.ui.detail.anime
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,6 +21,8 @@ import id.smartech.smartnime.model.RecommendationsModel
 import id.smartech.smartnime.ui.detail.anime.episodes.AnimeEpisodesActivity
 import id.smartech.smartnime.ui.detail.anime.model.DetailAnimeModel
 import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterModel
+import id.smartech.smartnime.ui.detail.anime.model.VoiceActorModel
+import id.smartech.smartnime.ui.detail.character.DetailCharacterActivity
 
 
 class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
@@ -98,6 +101,19 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
         bind.rvCharacters.layoutManager = layoutManager
         adapter = AnimeCharacterAdapter(list)
         bind.rvCharacters.adapter = adapter
+        adapter.setOnItemClickCallback(object: AnimeCharacterAdapter.OnItemClickCallback{
+            override fun onClickCharacter(data: AnimeCharacterModel) {
+                val intent = Intent(this@DetailAnimeActivity, DetailCharacterActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+            override fun onClickVoiceActor(data: VoiceActorModel) {
+                intentBrowser(data.url!!)
+            }
+
+
+        })
 
         layoutManagerRecommendations = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
@@ -105,6 +121,15 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
         bind.rvRecommendations.layoutManager = layoutManagerRecommendations
         adapterRecommendations = RecommendationsAdapter(listRecommendations)
         bind.rvRecommendations.adapter = adapterRecommendations
+
+        adapterRecommendations.setOnItemClickCallback(object : RecommendationsAdapter.OnItemClickCallback {
+            override fun onClickItem(data: RecommendationsModel) {
+                val intent = Intent(this@DetailAnimeActivity, DetailAnimeActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
 
     }
     private fun setData(data: DetailAnimeModel) {
@@ -147,6 +172,14 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
                 .error(R.drawable.white)
                 .into(bind.image)
 
+        bind.detail.setOnClickListener {
+            intentBrowser(url = data.url)
+        }
+
+        bind.share.setOnClickListener {
+            shareToOtherApps(data.url)
+        }
+
         if(data.trailerUrl == null) {
             bind.youtubePlayerView.visibility = View.GONE
         } else {
@@ -158,6 +191,15 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
                 }
             })
         }
+    }
+
+    private fun shareToOtherApps(text: String) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.putExtra(Intent.EXTRA_TEXT, text)
+        intent.type = "text/plain"
+
+        startActivity(Intent.createChooser(intent, "share to : "))
     }
 
     private fun removeBrackets(data: List<String>) : String{
@@ -172,6 +214,11 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
         }
 
         return result
+    }
+
+    private fun intentBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun setOnClick() {

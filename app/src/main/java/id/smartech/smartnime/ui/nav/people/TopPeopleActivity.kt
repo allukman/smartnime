@@ -1,5 +1,7 @@
 package id.smartech.smartnime.ui.nav.people
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -73,6 +75,18 @@ class TopPeopleActivity : BaseActivity<ActivityTopPeopleBinding>() {
         bind.rvTopPeople.layoutManager = layoutManager
         adapter = TopPeopleAdapter(list)
         bind.rvTopPeople.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : TopPeopleAdapter.OnItemClickCallback{
+            override fun onClickItem(data: TopPeopleModel) {
+                intentBrowser(data.url)
+            }
+
+        })
+    }
+
+    private fun intentBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
 }

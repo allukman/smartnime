@@ -15,23 +15,89 @@
             android:iconifiedByDefault="false"
             android:queryHint="Search for anime, manga, character, etc"
             android:queryBackground="@android:color/transparent"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/rounded_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/filter"/>
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <ImageButton
             android:id="@+id/filter"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:scaleType="fitXY"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="4dp"
             android:padding="4dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/filter"
-            app:layout_constraintLeft_toRightOf="@id/search_button"
+            android:src="@drawable/arrow_drop_down"
+            android:background="@drawable/rounded_background"
             app:layout_constraintTop_toTopOf="@id/search_button"
             app:layout_constraintBottom_toBottomOf="@id/search_button"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/search_button"/>
 
+        <TextView
+            android:id="@+id/query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search naruto in anime"
+            android:textStyle="italic"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_button"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/query">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_search"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_not_found"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:lottie_rawRes="@raw/not_found"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/black"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

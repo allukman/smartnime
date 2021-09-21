@@ -15,6 +15,7 @@ import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivitySeasonalBinding
 import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
 import id.smartech.smartnime.ui.nav.seasonal.model.SeasonalAnimeModel
+import id.smartech.smartnime.ui.sidebar.SidebarActivity
 
 class SeasonalActivity : BaseActivity<ActivitySeasonalBinding>() {
     private lateinit var viewModel: SeasonalViewModel
@@ -33,6 +34,13 @@ class SeasonalActivity : BaseActivity<ActivitySeasonalBinding>() {
         setRecyclerView()
         setSpinnerSeason()
         setSpinnerYear()
+        setOnClick()
+    }
+
+    private fun setOnClick() {
+        bind.back.setOnClickListener {
+            intents<SidebarActivity>(this)
+        }
     }
 
     private fun setViewModel() {

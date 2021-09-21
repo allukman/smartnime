@@ -15,12 +15,6 @@ abstract class BaseActivity<ActivityBinding : ViewDataBinding> : AppCompatActivi
     protected lateinit var sharedPref: SharedPreference
     protected var setLayout: Int? = null
 
-    companion object {
-        const val IMAGE_PICK_CODE = 100
-        const val PERMISSION_CODE = 101
-        const val RC_SIGN_IN = 123
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = DataBindingUtil.setContentView(this@BaseActivity, setLayout!!)
@@ -45,12 +39,6 @@ abstract class BaseActivity<ActivityBinding : ViewDataBinding> : AppCompatActivi
 
     protected fun noticeToast(message: String) {
         Toast.makeText(this@BaseActivity, message, Toast.LENGTH_SHORT).show()
-    }
-
-    protected fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
 }

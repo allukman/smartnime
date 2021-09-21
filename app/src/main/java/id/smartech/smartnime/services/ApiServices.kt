@@ -6,13 +6,16 @@ import id.smartech.smartnime.model.TopMangaResponse
 import id.smartech.smartnime.ui.detail.anime.characters.AnimeCharacterResponse
 import id.smartech.smartnime.ui.detail.anime.model.DetailAnimeModel
 import id.smartech.smartnime.ui.detail.anime.episodes.model.EpisodesResponse
+import id.smartech.smartnime.ui.detail.character.model.DetailCharacterResponse
 import id.smartech.smartnime.ui.detail.manga.characters.MangaCharactersResponse
 import id.smartech.smartnime.ui.detail.manga.model.DetailMangaResponse
 import id.smartech.smartnime.ui.nav.schedule.model.*
 import id.smartech.smartnime.ui.nav.people.model.TopPeopleResponse
 import id.smartech.smartnime.ui.nav.seasonal.model.SeasonalAnimeResponse
+import id.smartech.smartnime.ui.search.model.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServices {
 
@@ -110,6 +113,12 @@ interface ApiServices {
     @GET("manga/{id}/recommendations")
     suspend fun getDetailMangaRecommendations(@Path("id")id: Int) : RecommendationsResponse
 
+//    GET Detail Character
+    @GET("character/{id}")
+    suspend fun getDetailCharacter(@Path("id")id: Int): DetailCharacterResponse
 
+//    SEARCH
+    @GET("search/{type}?")
+    suspend fun getSearch(@Path("type")type: String, @Query("q")query: String) : SearchResponse
 
 }

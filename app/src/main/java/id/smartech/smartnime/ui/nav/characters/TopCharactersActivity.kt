@@ -1,5 +1,6 @@
 package id.smartech.smartnime.ui.nav.characters
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,8 @@ import id.smartech.smartnime.R
 import id.smartech.smartnime.adapter.TopPeopleAdapter
 import id.smartech.smartnime.base.BaseActivity
 import id.smartech.smartnime.databinding.ActivityTopCharactersBinding
+import id.smartech.smartnime.ui.detail.anime.DetailAnimeActivity
+import id.smartech.smartnime.ui.detail.character.DetailCharacterActivity
 import id.smartech.smartnime.ui.sidebar.SidebarActivity
 import id.smartech.smartnime.ui.nav.people.model.TopPeopleModel
 
@@ -73,5 +76,14 @@ class TopCharactersActivity : BaseActivity<ActivityTopCharactersBinding>() {
         bind.rvTopCharacters.layoutManager = layoutManager
         adapter = TopPeopleAdapter(list)
         bind.rvTopCharacters.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : TopPeopleAdapter.OnItemClickCallback {
+            override fun onClickItem(data: TopPeopleModel) {
+                val intent = Intent(this@TopCharactersActivity, DetailCharacterActivity::class.java)
+                intent.putExtra("id", data.malId)
+                startActivity(intent)
+            }
+
+        })
     }
 }
