@@ -83,7 +83,6 @@ class DetailAnimeActivity : BaseActivity<ActivityDetailAnimeBinding>() {
         this.let {
             viewModel.onSuccessRecommendationsLiveData.observe(it) { data ->
                 adapterRecommendations.addList(data)
-                Log.d("recommendation", data.toString())
             }
         }
 

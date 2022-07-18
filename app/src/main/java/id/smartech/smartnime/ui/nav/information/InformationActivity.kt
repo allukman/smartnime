@@ -24,14 +24,6 @@ class InformationActivity : BaseActivity<ActivityInformationBinding>() {
         bind.lukman.setOnClickListener {
             intentBrowser("https://www.instagram.com/allukman__/")
         }
-
-        bind.jeff.setOnClickListener {
-            intentBrowser("https://www.instagram.com/jeff_aria_/")
-        }
-
-        bind.syahrul.setOnClickListener {
-            intentBrowser("https://www.instagram.com/astronotdarat___/")
-        }
     }
 
     private fun intentBrowser(url: String) {

@@ -9,5 +9,5 @@ data class SeasonalAnimeResponse (
         @SerializedName("request_cache_expiry")val requestCacheExpiry: Int,
         @SerializedName("season_name")val seasonName: String,
         @SerializedName("2020")val seasonYear: String,
-        val anime: ArrayList<SeasonalAnimeModel>
+        val anime: ArrayList<SeasonalAnimeModel>?
 )

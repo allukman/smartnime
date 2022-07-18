@@ -40,7 +40,7 @@ class SeasonalAnimeAdapter(private val items: ArrayList<SeasonalAnimeModel>): Re
     override fun onBindViewHolder(holder: SeasonalAnimeHolder, position: Int) {
         val item = items[position]
 
-        val genres = item.genres.map {
+        val genres = item.genres?.map {
             it.name
         }
 

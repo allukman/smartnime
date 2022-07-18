@@ -87,24 +87,6 @@
                         android:textSize="16sp"/>
 
                     <TextView
-                        android:id="@+id/jeff"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jeff Aria"
-                        android:textColor="@color/elm"
-                        android:layout_gravity="center"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/syahrul"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Syahrul Ramadhan"
-                        android:textColor="@color/elm"
-                        android:layout_gravity="center"
-                        android:textSize="16sp"/>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="API"
